@@ -1,5 +1,5 @@
 'use client'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type { Movie } from '../types/movie'
@@ -12,6 +12,39 @@ interface MovieRowProps {
 
 export function MovieRow({ title, movies }: MovieRowProps) {
   const rowRef = useRef<HTMLDivElement>(null)
+
+  // Create a unique storage key for this specific row
+  const storageKey = `movie-row-scroll-${title
+    .replace(/\s+/g, '-')
+    .toLowerCase()}`
+
+  useEffect(() => {
+    // Restore scroll position when component mounts
+    if (rowRef.current && typeof window !== 'undefined') {
+      const savedScrollPosition = localStorage.getItem(storageKey)
+      if (savedScrollPosition) {
+        rowRef.current.scrollTo({
+          left: parseInt(savedScrollPosition, 10),
+          behavior: 'instant',
+        })
+      }
+    }
+
+    // Save scroll position when user scrolls
+    const handleScroll = () => {
+      if (rowRef.current) {
+        localStorage.setItem(storageKey, rowRef.current.scrollLeft.toString())
+      }
+    }
+
+    const currentRow = rowRef.current
+    currentRow?.addEventListener('scroll', handleScroll)
+
+    // Clean up event listener
+    return () => {
+      currentRow?.removeEventListener('scroll', handleScroll)
+    }
+  }, [storageKey])
 
   const scroll = (direction: 'left' | 'right') => {
     if (rowRef.current) {
