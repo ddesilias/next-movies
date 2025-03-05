@@ -19,7 +19,10 @@ export function FeaturedMovie({ movie }: FeaturedMovieProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
       </div>
 
-      <div className="relative pt-48 px-8 max-w-2xl">
+      <div
+        className="relative pt-48 px-8 max-w-2xl"
+        style={{ viewTransitionName: 'featured-details' }}
+      >
         <h1 className="text-6xl font-bold text-white mb-4">{movie.title}</h1>
         <div className="flex items-center gap-4 text-sm text-white/80 mb-6">
           <span>{new Date(movie.release_date).getFullYear()}</span>

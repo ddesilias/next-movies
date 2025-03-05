@@ -25,7 +25,7 @@ export function MovieRow({ title, movies }: MovieRowProps) {
   }
 
   return (
-    <div className="relative">
+    <div className="relative" style={{ viewTransitionName: 'movie-row' }}>
       <h2 className="text-xl font-semibold text-white">{title}</h2>
       <div className="group relative">
         <button

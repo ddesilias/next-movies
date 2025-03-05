@@ -24,7 +24,10 @@ export default async function MoviePage({
       <div className="relative">
         <BackButton />
 
-        <div className="px-8 py-4 flex gap-8">
+        <div
+          className="px-8 py-4 flex gap-8"
+          style={{ viewTransitionName: 'movie-details' }}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={getImageUrl(movie.poster_path, 'w500')}
