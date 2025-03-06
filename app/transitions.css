@@ -73,3 +73,11 @@
 ::view-transition-new(movie-details) {
   animation: 0.35s var(--easing-function) both fade-and-move-in;
 }
+
+::view-transition-old(side-panel) {
+  animation: 0.35s var(--easing-function) both fade-and-move-out reverse;
+}
+
+::view-transition-new(side-panel) {
+  animation: 0.35s var(--easing-function) both fade-and-move-in reverse;
+}

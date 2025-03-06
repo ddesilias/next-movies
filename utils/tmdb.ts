@@ -1,4 +1,8 @@
-import type { MovieResponse, MovieDetail } from '../types/movie'
+import type {
+  MovieResponse,
+  MovieDetail,
+  MovieReviewsResponse,
+} from '../types/movie'
 
 const BASE_URL = 'https://api.themoviedb.org/3'
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p'
@@ -44,4 +48,20 @@ export const getImageUrl = (
   size: 'original' | 'w500' = 'original'
 ) => {
   return `${IMAGE_BASE_URL}/${size}${path}`
+}
+
+export async function getMovieReviews(movieId: string) {
+  const response = await fetch(
+    `${BASE_URL}/movie/${movieId}/reviews?language=en-US&page=1`,
+    {
+      headers,
+    }
+  )
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch reviews')
+  }
+
+  const data = (await response.json()) as MovieReviewsResponse
+  return data.results
 }

@@ -1,13 +1,15 @@
 import { getImageUrl } from '../../../utils/tmdb'
 import { BackButton } from '../../../components/BackButton'
 import { getMovieById } from '../../../utils/tmdb'
+import Link from 'next/link'
 
 export default async function MoviePage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
-  const movie = await getMovieById(params.id)
+  const { id } = await params
+  const movie = await getMovieById(id)
 
   return (
     <div className="relative min-h-screen bg-black">
@@ -40,6 +42,8 @@ export default async function MoviePage({
               {movie.title}
             </h1>
             <p className="text-lg text-white/80 mb-8">{movie.overview}</p>
+
+            <Link href={`/movie/${id}/reviews`}>Reviews!!</Link>
 
             <div className="mb-8">
               <h2 className="text-lg font-semibold text-white/60 mb-4">CAST</h2>
