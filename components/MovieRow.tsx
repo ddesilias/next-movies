@@ -21,7 +21,7 @@ export function MovieRow({ title, movies }: MovieRowProps) {
   useEffect(() => {
     // Restore scroll position when component mounts
     if (rowRef.current && typeof window !== 'undefined') {
-      const savedScrollPosition = localStorage.getItem(storageKey)
+      const savedScrollPosition = sessionStorage.getItem(storageKey)
       if (savedScrollPosition) {
         rowRef.current.scrollTo({
           left: parseInt(savedScrollPosition, 10),
@@ -33,7 +33,7 @@ export function MovieRow({ title, movies }: MovieRowProps) {
     // Save scroll position when user scrolls
     const handleScroll = () => {
       if (rowRef.current) {
-        localStorage.setItem(storageKey, rowRef.current.scrollLeft.toString())
+        sessionStorage.setItem(storageKey, rowRef.current.scrollLeft.toString())
       }
     }
 
