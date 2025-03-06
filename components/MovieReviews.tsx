@@ -1,10 +1,18 @@
 import { getMovieReviews } from '../utils/tmdb'
+import Link from 'next/link'
 
 export default async function MovieReviews({ movieId }: { movieId: string }) {
   const reviews = await getMovieReviews(movieId)
 
   return (
-    <div className="bg-black/80 p-6 rounded-lg h-full overflow-y-auto">
+    <div className="bg-black/80 p-6 rounded-lg h-full overflow-y-auto relative">
+      <Link
+        href={`/movie/${movieId}`}
+        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-gray-700 transition-colors"
+      >
+        ✕
+      </Link>
+
       <h2 className="text-2xl font-bold text-white mb-6">Reviews</h2>
 
       {reviews.length === 0 ? (

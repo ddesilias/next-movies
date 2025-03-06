@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { unstable_ViewTransition as ViewTransition } from 'react'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import './transitions.css'
@@ -30,8 +31,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="min-h-screen bg-black">
-          {children}
-          {modal}
+          <ViewTransition>
+            {children}
+            {modal}
+          </ViewTransition>
         </div>
       </body>
     </html>
