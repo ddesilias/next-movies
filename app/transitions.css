@@ -44,6 +44,26 @@
   }
 }
 
+@keyframes move-in-from-right {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes move-out-to-right {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
 /* View Transitions */
 
 :root {
@@ -66,18 +86,18 @@
   animation: 0.35s var(--easing-function) both fade-and-move-in;
 }
 
-::view-transition-old(movie-details) {
+::view-transition-old(movie-details):only-child {
   animation: 0.35s var(--easing-function) both fade-and-move-out;
 }
 
-::view-transition-new(movie-details) {
+::view-transition-new(movie-details):only-child {
   animation: 0.35s var(--easing-function) both fade-and-move-in;
 }
 
 ::view-transition-old(side-panel) {
-  animation: 0.35s var(--easing-function) both fade-and-move-out reverse;
+  animation: 0.35s var(--easing-function) both move-out-to-right;
 }
 
 ::view-transition-new(side-panel) {
-  animation: 0.35s var(--easing-function) both fade-and-move-in reverse;
+  animation: 0.35s var(--easing-function) both move-in-from-right;
 }
