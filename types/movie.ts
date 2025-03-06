@@ -6,6 +6,9 @@ export interface Movie {
   backdrop_path: string
   release_date: string
   vote_average: number
+  credits: {
+    cast: Cast[]
+  }
 }
 
 export interface MovieResponse {

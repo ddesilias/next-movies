@@ -2,9 +2,10 @@ import Link from 'next/link'
 import { MessageSquareMore } from 'lucide-react'
 import { getImageUrl } from '../utils/tmdb'
 import { BackButton } from './BackButton'
+import type { Movie } from '../types/movie'
 
 interface MovieDetailsProps {
-  movie: any // Ideally this would have a proper Movie type
+  movie: Movie
 }
 
 export function MovieDetails({ movie }: MovieDetailsProps) {

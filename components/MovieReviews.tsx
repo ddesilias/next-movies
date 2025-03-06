@@ -1,7 +1,7 @@
 import { getMovieReviews } from '../utils/tmdb'
 import Link from 'next/link'
 
-export default async function MovieReviews({ movieId }: { movieId: string }) {
+export async function MovieReviews({ movieId }: { movieId: string }) {
   const reviews = await getMovieReviews(movieId)
 
   return (

@@ -1,4 +1,7 @@
-import MovieReviews from '../../../../components/MovieReviews'
+import { getMovieById } from '@/utils/tmdb'
+import { MovieDetails } from '@/components/MovieDetails'
+import { SidePanel } from '@/components/SidePanel'
+import { MovieReviews } from '@/components/MovieReviews'
 
 export default async function Reviews({
   params,
@@ -6,5 +9,14 @@ export default async function Reviews({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  return <MovieReviews movieId={id} />
+  const movie = await getMovieById(id)
+
+  return (
+    <>
+      <MovieDetails movie={movie} />
+      <SidePanel>
+        <MovieReviews movieId={id} />
+      </SidePanel>
+    </>
+  )
 }

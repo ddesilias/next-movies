@@ -1,5 +1,5 @@
-import MovieReviews from '../../../../../components/MovieReviews'
-import SidePanel from '../../../../../components/SidePanel'
+import { SidePanel } from '@/components/SidePanel'
+import { MovieReviews } from '@/components/MovieReviews'
 
 export default async function Reviews({
   params,

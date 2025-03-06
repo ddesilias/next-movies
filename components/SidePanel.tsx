@@ -7,7 +7,7 @@ interface SidePanelProps {
   children: React.ReactNode
 }
 
-const SidePanel: React.FC<SidePanelProps> = ({ children }) => {
+export const SidePanel: React.FC<SidePanelProps> = ({ children }) => {
   return (
     <>
       <ViewTransition name="side-panel-background">
@@ -19,5 +19,3 @@ const SidePanel: React.FC<SidePanelProps> = ({ children }) => {
     </>
   )
 }
-
-export default SidePanel

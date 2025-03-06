@@ -1,5 +1,5 @@
-import { getMovieById } from '../../../utils/tmdb'
-import { MovieDetails } from '../../../components/MovieDetails'
+import { getMovieById } from '@/utils/tmdb'
+import { MovieDetails } from '@/components/MovieDetails'
 
 export default async function MoviePage({
   params,
