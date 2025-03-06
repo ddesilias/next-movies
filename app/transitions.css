@@ -95,9 +95,9 @@
 }
 
 ::view-transition-old(side-panel) {
-  animation: 0.35s var(--easing-function) both move-out-to-right;
+  animation: 0.25s var(--easing-function) both move-out-to-right;
 }
 
 ::view-transition-new(side-panel) {
-  animation: 0.35s var(--easing-function) both move-in-from-right;
+  animation: 0.25s var(--easing-function) both move-in-from-right;
 }

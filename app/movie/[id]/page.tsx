@@ -2,6 +2,7 @@ import { getImageUrl } from '../../../utils/tmdb'
 import { BackButton } from '../../../components/BackButton'
 import { getMovieById } from '../../../utils/tmdb'
 import Link from 'next/link'
+import { MessageSquareMore } from 'lucide-react'
 
 export default async function MoviePage({
   params,
@@ -43,7 +44,13 @@ export default async function MoviePage({
             </h1>
             <p className="text-lg text-white/80 mb-8">{movie.overview}</p>
 
-            <Link href={`/movie/${id}/reviews`}>Reviews!!</Link>
+            <Link
+              href={`/movie/${id}/reviews`}
+              className="flex items-center gap-2 px-8 py-3 bg-white/20 text-white rounded-lg font-semibold hover:bg-white/30 transition w-fit mb-8"
+            >
+              <MessageSquareMore size={24} />
+              Reviews
+            </Link>
 
             <div className="mb-8">
               <h2 className="text-lg font-semibold text-white/60 mb-4">CAST</h2>
